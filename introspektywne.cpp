@@ -3,7 +3,7 @@
 template <class typ>
 void sortowanie_introspektywne(typ *tablica, int dlugosc)
 {
-  IntroSort(tablica,dlugosc,(int)floor(2*log(dlugosc)/M_LN2));
+  IntroSort(tablica,dlugosc,(int)floor(2*log(dlugosc)/log(2)));
   Insertion_Sort(tablica,dlugosc);
 }
 

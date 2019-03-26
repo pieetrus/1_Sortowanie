@@ -3,8 +3,7 @@
 using namespace std;
 
 template <class typ>
-void scal(int *a, int low, int high, int mid);
+void scal(typ *tab, int low, int high, int mid);
 
 template <class typ>
-void sortowanie_scalanie(int *a, int low, int high);
-
+void sortowanie_scalanie(int *tab, int low, int high);

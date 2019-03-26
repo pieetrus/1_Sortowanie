@@ -1,19 +1,24 @@
 #include <iostream>
 #include "testy.cpp"
-//#define ILOSC 10
 #include<fstream>
+#include <iomanip>
+
 
 int main(){
-  int i, j;
+   int i, j;
    int ilosc_testow=100;
   double scalanie=0, szybkie=0, introspektywne=0;
-  int ILOSC[4]={10000, 50000, 100000, 500000};
+  int ILOSC[5]={10000, 50000, 100000, 500000,1000000};
 
-  cout.setf(ios::fixed); //ustawuany dokladnosc
-  fstream plik;
-
+  ofstream plik;
   plik.open("Wyniki_testow.txt", ios::out | ios::app);
-  for(j=0; j<4; j++){
+
+  plik.precision(6);
+  plik.setf(ios::fixed);
+  plik.setf(ios::showpoint);
+
+
+  for(j=0; j<5; j++){
       int* tablica=new int [ILOSC[j]];
       plik<<endl<<"SORTOWANIE "<<ILOSC[j]<<" ELEMENTOW"<<endl;
       plik<<endl<<"LOSOWA"<<endl;
@@ -51,9 +56,9 @@ int main(){
     Czesciowo_posortowana<int>(tablica, ILOSC[j],50);
     Test<int>(tablica, ILOSC[j], scalanie, szybkie, introspektywne);
     }
-    plik<<"SCALANIE: "<<scalanie<<endl;
-    plik<<"SZYBKIE: "<<szybkie<<endl;
-    plik<<"INTROSPEKTYWNE: "<<introspektywne<<endl;
+    plik<<"SCALANIE: "<< scalanie<<endl;
+    plik<<"SZYBKIE: "<< szybkie<<endl;
+    plik<<"INTROSPEKTYWNE: "<< introspektywne<<endl;
     scalanie=0, szybkie=0,   introspektywne=0;
 
     plik<<endl<<"75% POSORTOWANA"<<endl;
@@ -61,10 +66,9 @@ int main(){
       Czesciowo_posortowana<int>(tablica, ILOSC[j],75);
       Test<int>(tablica, ILOSC[j], scalanie, szybkie, introspektywne);
     }
-    plik<<"SCALANIE: "<<scalanie<<endl;
-    plik<<"SZYBKIE: "<<szybkie<<endl;
-
-    plik<<"INTROSPEKTYWNE: "<<introspektywne<<endl;
+    plik<<"SCALANIE: "<< scalanie<<endl;
+    plik<<"SZYBKIE: "<< szybkie<<endl;
+    plik<<"INTROSPEKTYWNE: "<< introspektywne<<endl;
     scalanie=0, szybkie=0,   introspektywne=0;
 
     plik<<endl<<"95% POSORTOWANA"<<endl;
@@ -72,10 +76,9 @@ int main(){
       Czesciowo_posortowana<int>(tablica, ILOSC[j],95);
       Test<int>(tablica, ILOSC[j], scalanie, szybkie, introspektywne);
     }
-    plik<<"SCALANIE: "<<scalanie<<endl;
-    plik<<"SZYBKIE: "<<szybkie<<endl;
-
-    plik<<"INTROSPEKTYWNE: "<<introspektywne<<endl;
+    plik<<"SCALANIE: "<< scalanie<<endl;
+    plik<<"SZYBKIE: "<< szybkie<<endl;
+    plik<<"INTROSPEKTYWNE: "<< introspektywne<<endl;
     scalanie=0, szybkie=0,   introspektywne=0;
 
     plik<<endl<<"99% POSORTOWANA"<<endl;
@@ -83,10 +86,9 @@ int main(){
       Czesciowo_posortowana<int>(tablica, ILOSC[j],99);
       Test<int>(tablica, ILOSC[j], scalanie, szybkie, introspektywne);
     }
-    plik<<"SCALANIE: "<<scalanie<<endl;
-    plik<<"SZYBKIE: "<<szybkie<<endl;
-
-    plik<<"INTROSPEKTYWNE: "<<introspektywne<<endl;
+    plik<<"SCALANIE: "<< scalanie<<endl;
+    plik<<"SZYBKIE: "<< szybkie<<endl;
+    plik<<"INTROSPEKTYWNE: "<< introspektywne<<endl;
     scalanie=0, szybkie=0,   introspektywne=0;
 
     plik<<endl<<"99,7% POSORTOWANA"<<endl;
@@ -94,10 +96,9 @@ int main(){
       Czesciowo_posortowana<int>(tablica, ILOSC[j],99.7);
       Test<int>(tablica, ILOSC[j], scalanie, szybkie, introspektywne);
     }
-    plik<<"SCALANIE: "<<scalanie<<endl;
-    plik<<"SZYBKIE: "<<szybkie<<endl;
-
-    plik<<"INTROSPEKTYWNE: "<<introspektywne<<endl;
+    plik<<"SCALANIE: "<< scalanie<<endl;
+    plik<<"SZYBKIE: "<< szybkie<<endl;
+    plik<<"INTROSPEKTYWNE: "<< introspektywne<<endl;
     scalanie=0, szybkie=0,introspektywne=0;
 
     cout << "Etap " << j << " elo" << endl;
@@ -107,8 +108,7 @@ int main(){
     plik << endl;
     plik <<"----------------" << endl;
     plik << "KONIEC" <<endl<<endl;
-  plik.close();
+    plik.close();
 
   return 0;
 }
-
